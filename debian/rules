@@ -1,4 +1,13 @@
 #!/usr/bin/make -f
 
+export DH_GOLANG_INSTALL_EXTRA := cmd/govulncheck/static
+export DH_GOLANG_EXCLUDES := cmd/govulncheck/integration
+
 %:
-	dh $@
+	dh $@ --builddirectory=_build --buildsystem=golang
+
+execute_after_dh_auto_configure:
+	# github.com/google/go-cmdtest is not packaged.
+	$(RM) -v _build/src/golang.org/x/vuln/cmd/govulncheck/main_command_118_test.go
+	# No need to run lint
+	$(RM) -v _build/src/golang.org/x/vuln/all_test.go
