@@ -1,0 +1,5 @@
+---
+Bug-Database: https://github.com/golang/go/issues
+Bug-Submit: https://github.com/golang/go/issues/new
+Repository: https://github.com/golang/vuln.git
+Repository-Browse: https://github.com/golang/vuln

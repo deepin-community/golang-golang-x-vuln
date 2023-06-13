@@ -1,15 +1,48 @@
-Source: template-repository
-Section: unknown
+Source: golang-golang-x-vuln
+Section: golang
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Shengjing Zhu <zhsj@debian.org>,
+Rules-Requires-Root: no
+Build-Depends: debhelper-compat (= 13),
+               dh-sequence-golang,
+               golang-any (>= 2:1.18~),
+               golang-github-google-go-cmp-dev (>= 0.5.8),
+               golang-golang-x-exp-dev (>= 0.0~git20220722.a9213ee),
+               golang-golang-x-mod-dev (>= 0.5.1-2~),
+               golang-golang-x-sync-dev,
+               golang-golang-x-tools-dev (>= 1:0.1.12),
+Testsuite: autopkgtest-pkg-go
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-golang-x-vuln
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-golang-x-vuln.git
+Homepage: https://github.com/golang/vuln
+XS-Go-Import-Path: golang.org/x/vuln
 
-Package: template-repository
+Package: golang-golang-x-vuln-dev
+Architecture: all
+Multi-Arch: foreign
+Depends: golang-golang-x-exp-dev (>= 0.0~git20220722.a9213ee),
+         golang-golang-x-mod-dev (>= 0.5.1-2~),
+         golang-golang-x-tools-dev (>= 1:0.1.12),
+         ${misc:Depends},
+Description: client and tools for the Go vulnerability database (library)
+ This package contains the following:
+  * Package client: a client for interacting with the Go vulnerability
+    database
+  * Package vulncheck: an API for detecting vulnerabilities in Go
+    packages
+
+Package: govulncheck
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+Static-Built-Using: ${misc:Static-Built-Using},
+Description: CLI for detecting vulnerabilities in Go packages
+ Govulncheck reports known vulnerabilities that affect Go code.
+ .
+ It uses static analysis or a binary's symbol table to narrow down
+ reports to only those that potentially affect the application.
+ .
+ For more information about the API behind govulncheck, see
+ https://go.dev/security/vulncheck.
