@@ -1,5 +1,52 @@
-template-repository (1.0-1) unstable; urgency=medium
+golang-golang-x-vuln (0.0~git20230201.4c848ed-2) unstable; urgency=medium
+
+  * Backport patch to support Go1.21
+
+ -- Shengjing Zhu <zhsj@debian.org>  Thu, 03 Aug 2023 19:43:05 +0800
+
+golang-golang-x-vuln (0.0~git20230201.4c848ed-1) unstable; urgency=medium
+
+  * New upstream version 0.0~git20230201.4c848ed
+  * Update Standards-Version to 4.6.2 (no changes)
+
+ -- Shengjing Zhu <zhsj@debian.org>  Tue, 07 Feb 2023 18:17:50 +0800
+
+golang-golang-x-vuln (0.0~git20221010.563322b-2) unstable; urgency=medium
+
+  * Add missing Depends golang-golang-x-sync-dev
+
+ -- Shengjing Zhu <zhsj@debian.org>  Tue, 01 Nov 2022 14:24:26 +0800
+
+golang-golang-x-vuln (0.0~git20221010.563322b-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version 0.0~git20221010.563322b
+  * Build-depend explicitly on golang-any (>= 2:1.18~) as per go.mod
+  * Update versioned dependencies as per go.mod
+  * Replace Built-Using field with Static-Built-Using
+
+ -- Anthony Fok <foka@debian.org>  Fri, 28 Oct 2022 11:47:39 -0600
+
+golang-golang-x-vuln (0.0~git20220725.4151a5a-2) unstable; urgency=medium
+
+  * Fix autopkgtest
+
+ -- Shengjing Zhu <zhsj@debian.org>  Thu, 04 Aug 2022 10:47:37 +0800
+
+golang-golang-x-vuln (0.0~git20220725.4151a5a-1) unstable; urgency=medium
+
+  * New upstream version 0.0~git20220725.4151a5a
+
+ -- Shengjing Zhu <zhsj@debian.org>  Wed, 03 Aug 2022 03:10:29 +0800
+
+golang-golang-x-vuln (0.0~git20220613.4eb5ba4-2) unstable; urgency=medium
+
+  * Source only upload for testing migration
+
+ -- Shengjing Zhu <zhsj@debian.org>  Sat, 25 Jun 2022 20:26:48 +0800
+
+golang-golang-x-vuln (0.0~git20220613.4eb5ba4-1) unstable; urgency=medium
 
   * Initial release
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Shengjing Zhu <zhsj@debian.org>  Sat, 18 Jun 2022 17:24:45 +0800

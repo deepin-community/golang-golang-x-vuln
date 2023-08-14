@@ -1,0 +1,35 @@
+From: Shengjing Zhu <zhsj@debian.org>
+Date: Thu, 3 Aug 2023 19:41:01 +0800
+Subject: add support for go versions > 1.20
+
+Origin: backport, https://github.com/golang/vuln/commit/81563a3c
+---
+ vulncheck/internal/gosym/sym.go      | 2 +-
+ vulncheck/internal/gosym/sym_test.go | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/vulncheck/internal/gosym/sym.go b/vulncheck/internal/gosym/sym.go
+index 7d5eb20..ddaac64 100644
+--- a/vulncheck/internal/gosym/sym.go
++++ b/vulncheck/internal/gosym/sym.go
+@@ -27,7 +27,7 @@ func FuncSymName(goVersion string) string {
+ 	mm := sv.MajorMinor(v)
+ 	if mm == "v1.18" || mm == "v1.19" {
+ 		return funcSymNameGo119Lower
+-	} else if mm == "v1.20" {
++	} else if sv.Compare(mm, "v1.20") >= 0 {
+ 		return funcSymNameGo120
+ 	} else if v == "" && strings.HasPrefix(goVersion, "devel") {
+ 		// We currently don't have a direct way of mapping
+diff --git a/vulncheck/internal/gosym/sym_test.go b/vulncheck/internal/gosym/sym_test.go
+index af9882e..9b89e30 100644
+--- a/vulncheck/internal/gosym/sym_test.go
++++ b/vulncheck/internal/gosym/sym_test.go
+@@ -19,6 +19,7 @@ func TestFuncSymName(t *testing.T) {
+ 		{"go1.19-pre4", "go.func.*"},
+ 		{"go1.20", "go:func.*"},
+ 		{"devel bd56cb90a72e6725e", "go:func.*"},
++		{"go1.21", "go:func.*"},
+ 	} {
+ 		if got := FuncSymName(test.v); got != test.want {
+ 			t.Errorf("got %s; want %s", got, test.want)
